@@ -3,17 +3,43 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
+  state = {
+    persons: [
+      { name: 'Shan', age: 32 },
+      { name: 'Maha', age: 25 },
+      { name: 'Rish', age: 14 },
+      { name: 'Dars', age: 9 }
+    ]
+  };
+
+  switchNameHandler = () => {
+    console.log('Was clicked!');
+  };
+
   render() {
     return (
       <div className="App">
         <h1>Hi, This is a React app</h1>
         <p>This is really working!</p>
-        <Person name="Shan" age="32" />
-        <Person name="Maha" age="25" />
-        <Person name="Rish" age="14">
+        <button onClick={this.switchNameHandler}>Switch Name</button>
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+        />
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+        />
+        <Person
+          name={this.state.persons[2].name}
+          age={this.state.persons[2].age}
+        >
           My Hobbies: Drawing
         </Person>
-        <Person name="Dars" age="9" />
+        <Person
+          name={this.state.persons[3].name}
+          age={this.state.persons[3].age}
+        />
       </div>
     );
 

@@ -5,10 +5,10 @@ import Person from './Person/Person';
 class App extends Component {
   state = {
     persons: [
-      { name: 'Shan', age: 32 },
-      { name: 'Maha', age: 25 },
-      { name: 'Rish', age: 14 },
-      { name: 'Dars', age: 9 }
+      { id: 'fgftgh', name: 'Shan', age: 32 },
+      { id: 'ohlibu', name: 'Maha', age: 25 },
+      { id: 'hmjjds', name: 'Rish', age: 14 },
+      { id: 'etrdgc', name: 'Dars', age: 9 }
     ],
     otherState: 'Some other value',
     showPersons: false
@@ -58,6 +58,7 @@ class App extends Component {
                 click={() => this.deletePersonHandler(index)}
                 name={person.name}
                 age={person.age}
+                key={person.id}
               />
             );
           })}
@@ -91,7 +92,7 @@ class App extends Component {
         <h1>Hi, This is a React app</h1>
         <p>This is really working!</p>
         <button style={btnStyle} onClick={this.togglePersonsHandler}>
-          Switch Name
+          Toggle Persons
         </button>
 
         {persons}

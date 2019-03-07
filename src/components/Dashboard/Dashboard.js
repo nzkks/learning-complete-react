@@ -18,7 +18,7 @@ const dashboard = props => {
 
   return (
     <div className={styles.dashboard}>
-      <h1>Hi, This is a React app</h1>
+      <h1>{props.title}</h1>
       <p className={classes.join(' ')}>This is really working!</p>
       <button className={btnClass} onClick={props.clicked}>
         Toggle Persons

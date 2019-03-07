@@ -1,0 +1,31 @@
+.red {
+  color: red;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.dashboard button {
+  background-color: green;
+  color: white;
+  font: inherit;
+  border: 1px solid white;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dashboard button:hover {
+  background-color: lightgreen;
+  color: black;
+}
+
+.dashboard button.red {
+  background-color: red;
+  color: white;
+}
+
+.dashboard button.red:hover {
+  background-color: salmon;
+  color: black;
+}

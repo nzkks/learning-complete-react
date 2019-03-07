@@ -4,6 +4,22 @@ import Persons from '../components/Persons/Persons';
 import Dashboard from '../components/Dashboard/Dashboard';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log('[App.js] constructor');
+    // this.state = {
+    //   persons: [
+    //     { id: 'fgftgh', name: 'Shan', age: 32 },
+    //     { id: 'ohlibu', name: 'Maha', age: 25 },
+    //     { id: 'hmjjds', name: 'Rish', age: 14 },
+    //     { id: 'etrdgc', name: 'Dars', age: 9 }
+    //   ],
+    //   otherState: 'Some other value',
+    //   showPersons: false
+    // };
+  }
+
+  //* modern way of having state outside of constructor
   state = {
     persons: [
       { id: 'fgftgh', name: 'Shan', age: 32 },
@@ -14,6 +30,21 @@ class App extends Component {
     otherState: 'Some other value',
     showPersons: false
   };
+
+  //* rarely used lifecycle.
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps', props);
+    return state;
+  }
+
+  //! legacy lifecycle. Unsafe legacy lifecycles will not be called for components using new component APIs.
+  // componentWillMount() {
+  //   console.log('[App.js] componentWillMount');
+  // }
+
+  componentDidMount() {
+    console.log('[App.js] componentDidMount');
+  }
 
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => {
@@ -44,6 +75,8 @@ class App extends Component {
   };
 
   render() {
+    console.log('[App.js] render');
+
     let persons = null;
 
     if (this.state.showPersons) {

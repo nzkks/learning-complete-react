@@ -1,20 +1,52 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Person from './Person/Person';
 
-const persons = props => {
-  console.log('[Persons.js] rendering...');
+class Persons extends Component {
+  // static getDerivedStateFromProps(props, state) {
+  //   console.log('[Persons.js] getDerivedStateFromProps');
+  //   return state;
+  // }
 
-  return props.persons.map((person, index) => {
-    return (
-      <Person
-        click={() => props.clicked(index)}
-        key={person.id}
-        name={person.name}
-        age={person.age}
-        changed={event => props.changed(event, person.id)}
-      />
-    );
-  });
-};
+  //! Unsafe Legacy lifecycle.
+  // componentWillReceiveProps(props) {
+  //   console.log('[Persons.js] componentWillReceiveProps', props);
+  // }
 
-export default persons;
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[Persons.js] shouldComponentUpdate');
+    return true;
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log('[Persons.js] getSnapshotBeforeUpdate');
+    return { message: 'Snapshot!' };
+  }
+
+  //! Unsafe Legacy lifecycle.
+  // componentWillUpdate(){
+
+  // }
+
+  // this will run once the render function runs. i.e. after the component gets updated.
+  componentDidUpdate(prevProps, prevState, Snapshot) {
+    console.log('[Persons.js] componentDidUpdate');
+    console.log(Snapshot);
+  }
+
+  render() {
+    console.log('[Persons.js] rendering...');
+    return this.props.persons.map((person, index) => {
+      return (
+        <Person
+          click={() => this.props.clicked(index)}
+          key={person.id}
+          name={person.name}
+          age={person.age}
+          changed={event => this.props.changed(event, person.id)}
+        />
+      );
+    });
+  }
+}
+
+export default Persons;

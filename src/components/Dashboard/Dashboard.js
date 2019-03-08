@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styles from './Dashboard.module.css';
 
-const dashboard = props => {
+const dashboard1 = props => {
   //* useEffect - componentDidMount and ComponentDidUpdate combined in one effect
   useEffect(() => {
     console.log('[Dashboard.js] useEffect');
@@ -35,11 +35,11 @@ const dashboard = props => {
     btnClass = styles.red;
   }
 
-  if (props.persons.length <= 2) {
+  if (props.personsLength <= 2) {
     classes.push(styles.red); // classes = [red]
   }
 
-  if (props.persons.length <= 1) {
+  if (props.personsLength <= 1) {
     classes.push(styles.bold); // classes = [red, bold]
   }
 
@@ -53,5 +53,11 @@ const dashboard = props => {
     </div>
   );
 };
+
+const areEqual = (prevProps, nextProps) => {
+  return prevProps.dashboard === nextProps.dashboard;
+};
+
+const dashboard = React.memo(dashboard1, areEqual);
 
 export default dashboard;

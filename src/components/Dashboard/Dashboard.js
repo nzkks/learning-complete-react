@@ -6,13 +6,16 @@ const dashboard = props => {
   useEffect(() => {
     console.log('[Dashboard.js] useEffect');
 
-    // Http request
+    // Http request or similar code can go here
+
     setTimeout(() => {
+      //const timer = setTimeout(() => {
       alert('Saved / fetched data to cloud!'); // just an example.
     }, 1000);
 
     //* The return statement below runs BEFORE the main useEffect function runs, but AFTER the (first) render cycle.
     return () => {
+      // clearTimeout(timer);
       console.log('[Dashboard.js] cleanup work in useEffect');
     };
   }, []); // empty array is passed to avoid useEffect running all the time. Now it runs once in the beginning

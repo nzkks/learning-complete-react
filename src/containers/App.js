@@ -28,7 +28,8 @@ class App extends Component {
       { id: 'etrdgc', name: 'Dars', age: 9 }
     ],
     otherState: 'Some other value',
-    showPersons: false
+    showPersons: false,
+    showDashboard: true
   };
 
   //* rarely used lifecycle.
@@ -100,12 +101,22 @@ class App extends Component {
 
     return (
       <div className={styles.app}>
-        <Dashboard
-          title={this.props.appTitle}
-          persons={this.state.persons}
-          showPersons={this.state.showPersons}
-          clicked={this.togglePersonsHandler}
-        />
+        <button
+          onClick={() => {
+            this.setState({ showDashboard: false });
+          }}
+        >
+          Remove Dashboard
+        </button>
+
+        {this.state.showDashboard ? (
+          <Dashboard
+            title={this.props.appTitle}
+            persons={this.state.persons}
+            showPersons={this.state.showPersons}
+            clicked={this.togglePersonsHandler}
+          />
+        ) : null}
         {persons}
       </div>
     );

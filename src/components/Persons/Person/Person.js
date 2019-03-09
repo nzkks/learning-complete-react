@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 // import Aux from '../../../hoc/Auxiliary';
-// import styles from './Person.module.css';
+import styles from './Person.module.css';
+import withClass from '../../../hoc/withClass';
 
 class Person extends Component {
   render() {
@@ -29,4 +30,4 @@ class Person extends Component {
   }
 }
 
-export default Person;
+export default withClass(Person, styles.person);

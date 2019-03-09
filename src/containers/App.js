@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styles from './App.module.css';
 import Persons from '../components/Persons/Persons';
 import Dashboard from '../components/Dashboard/Dashboard';
@@ -142,5 +143,9 @@ class App extends Component {
   //   React.createElement('h1', 'null', 'Hi, This is a React app!!!')
   // );
 }
+
+App.propTypes = {
+  appTitle: PropTypes.string
+};
 
 export default withClass(App, styles.app);

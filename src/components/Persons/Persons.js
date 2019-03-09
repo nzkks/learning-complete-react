@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Person from './Person/Person';
 
 class Persons extends PureComponent {
@@ -61,5 +62,11 @@ class Persons extends PureComponent {
     });
   }
 }
+
+Persons.propTypes = {
+  persons: PropTypes.object,
+  clicked: PropTypes.func,
+  changed: PropTypes.func
+};
 
 export default Persons;

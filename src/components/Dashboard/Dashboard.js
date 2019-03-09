@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styles from './Dashboard.module.css';
 
 const dashboard1 = props => {
@@ -52,6 +53,13 @@ const dashboard1 = props => {
       </button>
     </div>
   );
+};
+
+dashboard1.propTypes = {
+  showPersons: PropTypes.bool,
+  personsLength: PropTypes.number,
+  title: PropTypes.string,
+  clicked: PropTypes.func
 };
 
 const areEqual = (prevProps, nextProps) => {

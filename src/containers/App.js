@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './App.module.css';
 import Persons from '../components/Persons/Persons';
 import Dashboard from '../components/Dashboard/Dashboard';
+import WithClass from '../hoc/WithClass';
 
 class App extends Component {
   constructor(props) {
@@ -100,7 +101,8 @@ class App extends Component {
     }
 
     return (
-      <div className={styles.app}>
+      //* Use below higher order component wrapper to set styles on that level
+      <WithClass classes={styles.app}>
         <button
           onClick={() => {
             this.setState({ showDashboard: false });
@@ -118,7 +120,7 @@ class App extends Component {
           />
         ) : null}
         {persons}
-      </div>
+      </WithClass>
     );
   }
 

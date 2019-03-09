@@ -32,7 +32,8 @@ class App extends Component {
     ],
     otherState: 'Some other value',
     showPersons: false,
-    showDashboard: true
+    showDashboard: true,
+    changeCounter: 0
   };
 
   //* rarely used lifecycle.
@@ -71,7 +72,12 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState({ persons: persons });
+    this.setState((prevState, props) => {
+      return {
+        persons: persons,
+        changeCounter: prevState.changeCounter + 1
+      };
+    });
   };
 
   deletePersonHandler = personIndex => {

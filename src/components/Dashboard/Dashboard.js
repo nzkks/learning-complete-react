@@ -1,18 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Dashboard.module.css';
 
-const dashboard1 = props => {
+const dashboard = props => {
+  const toggleBtnRef = useRef(null);
+
   //* useEffect - componentDidMount and ComponentDidUpdate combined in one effect
   useEffect(() => {
     console.log('[Dashboard.js] useEffect');
 
     // Http request or similar code can go here
 
-    setTimeout(() => {
-      //const timer = setTimeout(() => {
-      alert('Saved / fetched data to cloud!'); // just an example.
-    }, 1000);
+    // setTimeout(() => {
+    //   //const timer = setTimeout(() => {
+    //   alert('Saved / fetched data to cloud!'); // just an example.
+    // }, 1000);
+
+    toggleBtnRef.current.click();
 
     //* The return statement below runs BEFORE the main useEffect function runs, but AFTER the (first) render cycle.
     return () => {
@@ -48,24 +52,24 @@ const dashboard1 = props => {
     <div className={styles.dashboard}>
       <h1>{props.title}</h1>
       <p className={classes.join(' ')}>This is really working!</p>
-      <button className={btnClass} onClick={props.clicked}>
+      <button ref={toggleBtnRef} className={btnClass} onClick={props.clicked}>
         Toggle Persons
       </button>
     </div>
   );
 };
 
-dashboard1.propTypes = {
+dashboard.propTypes = {
   showPersons: PropTypes.bool,
   personsLength: PropTypes.number,
   title: PropTypes.string,
   clicked: PropTypes.func
 };
 
-const areEqual = (prevProps, nextProps) => {
-  return prevProps.dashboard === nextProps.dashboard;
-};
+// const areEqual = (prevProps, nextProps) => {
+//   return prevProps.dashboard === nextProps.dashboard;
+// };
 
-const dashboard = React.memo(dashboard1, areEqual);
+// const dashboard = React.memo(dashboard1, areEqual);
 
-export default dashboard;
+export default React.memo(dashboard);

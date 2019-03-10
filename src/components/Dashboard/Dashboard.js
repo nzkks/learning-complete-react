@@ -1,10 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Dashboard.module.css';
 import AuthContext from '../../context/auth-context';
 
 const dashboard = props => {
   const toggleBtnRef = useRef(null);
+
+  const authContext = useContext(AuthContext);
+  console.log(authContext.authenticated);
 
   //* useEffect - componentDidMount and ComponentDidUpdate combined in one effect
   useEffect(() => {
@@ -56,9 +59,8 @@ const dashboard = props => {
       <button ref={toggleBtnRef} className={btnClass} onClick={props.clicked}>
         Toggle Persons
       </button>
-      <AuthContext.Consumer>
-        {context => <button onClick={context.login}>Log in</button>}
-      </AuthContext.Consumer>
+
+      <button onClick={authContext.login}>Log in</button>
     </div>
   );
 };

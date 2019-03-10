@@ -64,7 +64,7 @@ class Persons extends PureComponent {
 }
 
 Persons.propTypes = {
-  persons: PropTypes.object,
+  persons: PropTypes.array,
   clicked: PropTypes.func,
   changed: PropTypes.func
 };
